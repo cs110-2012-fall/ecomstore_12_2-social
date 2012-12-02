@@ -1,0 +1,139 @@
+{% extends "base.html" %}
+
+{% load catalog_tags %}
+	{% load search_tags %}
+	
+	{% block shop_cart%}
+	
+			     <div class="span3" style="margin-right:-50px">
+			         {% cart_box request %}
+			     </div>
+			    
+				
+    {% endblock %}
+    
+    {% block account %}
+    	{% include 'tags/navigation.html' %}
+    {% endblock %}
+    
+    {% block search %}
+    	 {% search_box request%}
+    {% endblock %}
+
+	{% block body_header%}
+	<body class="services">
+	{% endblock%}
+
+		{% block CameraJS %}
+	<!-- Camera -->
+		<link rel="stylesheet" id="camera-css"  href="/static/css/camera.css" type="text/css" media="all">
+
+		<script type="text/javascript" src="/static/scripts/jquery.mobile.customized.min.js"></script>
+		<script type="text/javascript" src="/static/scripts/jquery.easing.1.3.js"></script>
+		<script type="text/javascript" src="/static/scripts/camera.min.js"></script>
+		
+		
+		<script>
+			jQuery(function(){
+				jQuery('#camera_wrap').each(function(){
+					var t = jQuery(this);
+					var s = 0;
+					t.camera({
+						height: '15%',
+						opacityOnGrid: true,
+						thumbnails: true
+					});
+				});
+			}); 
+		</script>
+	{% endblock%}
+
+{% block site_wrapper %}
+<link href="/static/css/services_style.css" rel="stylesheet" />
+<div class="row-fluid">
+				<div class="span12">
+				
+					<div class="padding-wrapper">				
+						<div id="camera_wrap" class="camera_wrap">
+							<div data-src="/static/images/slides/jeweler.jpg" data-thumb="/static/images/slides/thumbs/jeweler.jpg">
+								<div class="camera_caption">Michael works to repair a ring.</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+<div class ="e-container-fluid">
+	<div id="services-wrapper">
+		<div class="services-h1">
+			Services
+		</div>
+		<div class="services-content-block">
+			<div class="services-content-left">
+				<div class="services-content-left-image">
+					<img src="/static/images/services/services-repair.png">
+				</div>
+				<div class="services-content-left-text">
+					When it comes to jewelry repair, there's no one better, whether you need a ring prong fixed, pearls restrung, or a broken bracelet clasp repaired.
+				</div>
+			</div>
+			<div class="services-content-right">
+				<div class="services-content-right-image">
+					<img src="/static/images/services/services-battery.png">
+				</div>
+				<div class="services-content-right-text">
+					If your timepiece needs a replacement battery there's no better place than Michael Collin's Fine Jewelers. For a $5 flat fee your watch will recieve a new battery, typically within a few minutes!
+				</div>
+			</div>
+		</div>
+		<div class="services-content-block">
+			<div class="services-content-left">
+				<div class="services-content-left-image">
+					<img src="/static/images/services/services-watch.png">
+				</div>
+				<div class="services-content-left-text">
+					As a full-service jeweler, Michael Collins repairs all forms of jewelry- including watches! Michael will inform you of the best possible treatment for your treasure, and also the least expensive.
+				</div>
+			</div>
+			<div class="services-content-right">
+				<div class="services-content-right-image">
+					<img src="/static/images/services/services-appraisal.png">
+				</div>
+				<div class="services-content-right-text">
+					Michael also provides GIA certified jewelry appraisals. In today's world you can never be too safe, and having an updated appraisal of your piece will guarantee peace of mind. 
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+	<!-- You're code goes here, save all css modifications to services_style.css
+		 DO NOT modify any existing css classes because it could effect other pages that
+		 use that class. If you see something you like but needs to be tweaked just a little,
+		 just copy the contents, make the tweak, but give it a different name, and save the 
+		 new css class into services_style.css
+		 Make sure you use unique class names in your css file because about_style.css
+		 will be merged with other css files later on.  
+		 
+		 A few helpful tips that might save you some time
+		 1) if you want to add a photo, first save it in ecomstore/templates/images
+		 	the path becomes /static/images/<name of file>
+		 2) How an element gets placed on the page is determine by not only its own 'position'
+		    attribute, but its parent's 'position' attribute as well. Generally you want to
+		    place absolute positioned items inside of a parent whose position attribute is relative
+		 3) The pages with a '_vs' at the end have the generic bootstrap theme, you can use those as
+		 	building blocks if you like, remember, dont edit the bootstrap css files though.
+		 4) Feel free to add javascript if you like, theres tons of cool free scripts out online
+		    that may just need a few tweaks to fit our page
+		 
+		 -->
+</div>
+{% endblock %}
+
+<script>
+jQuery(function(){
+	$(document).ready(function() {
+		$("#camera_wrap").css("z-index", "30");
+	})
+})
+</script>

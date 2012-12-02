@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+{% load catalog_tags %}
+	{% load search_tags %}
+	
+{% block lightviewCSS %}
+	<!-- Lightview -->
+		<link rel="stylesheet" type="text/css" href="/static/css/lightview.css"/>
+			
+		<!--[if lt IE 9]>
+			<script type="text/javascript" src="scripts/excanvas.js"></script>
+		<![endif]-->
+		<script type="text/javascript" src="/static/scripts/spinners.min.js"></script>
+		<script type="text/javascript" src="/static/scripts/lightview.js"></script>
+	{% endblock %}
+	
+	{% block CameraJS %}
+	<!-- Camera -->
+		<link rel="stylesheet" id="camera-css"  href="/static/css/camera.css" type="text/css" media="all">
+
+		<script type="text/javascript" src="/static/scripts/jquery.mobile.customized.min.js"></script>
+		<script type="text/javascript" src="/static/scripts/jquery.easing.1.3.js"></script>
+		<script type="text/javascript" src="/static/scripts/camera.min.js"></script>
+		
+		<script>
+			jQuery(function(){
+				jQuery('#camera_wrap').each(function(){
+					var t = jQuery(this);
+					var s = 0;
+					t.camera({
+						height: '65%',
+						opacityOnGrid: true,
+						thumbnails: true
+					});
+				});
+			}); 
+		</script>
+	{% endblock%}
+	
+{% block catalogCss %}
+	<link href="/static/css/catalog_style.css" rel="stylesheet" />
+{% endblock %}	
+
+{% block site_wrapper %}
+	
+			<div class="e-row">
+				<div class="span2" style="width: 15%; float:left; margin: 0">
+					{% include 'tags/category_list.html'%}
+				</div>
+				<div class="span12" style= "width: 80%; line-height: 30px; margin-left: 5%;">
+					{% block catalog_content %}{% endblock %}
+				</div>
+			</div>			
+	
+{% endblock %}

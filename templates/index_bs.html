@@ -1,0 +1,190 @@
+{% extends "base.html" %}
+	{% block lightviewCSS %}
+	<!-- Lightview -->
+		<link rel="stylesheet" type="text/css" href="/static/css/lightview.css"/>
+			
+		<!--[if lt IE 9]>
+			<script type="text/javascript" src="scripts/excanvas.js"></script>
+		<![endif]-->
+		<script type="text/javascript" src="/static/scripts/spinners.min.js"></script>
+		<script type="text/javascript" src="/static/scripts/lightview.js"></script>
+	{% endblock %}
+	
+	{% block CameraJS %}
+	<!-- Camera -->
+		<link rel="stylesheet" id="camera-css"  href="/static/css/camera.css" type="text/css" media="all">
+
+		<script type="text/javascript" src="/static/scripts/jquery.mobile.customized.min.js"></script>
+		<script type="text/javascript" src="/static/scripts/jquery.easing.1.3.js"></script>
+		<script type="text/javascript" src="/static/scripts/camera.min.js"></script>
+		
+		<script>
+			jQuery(function(){
+				jQuery('#camera_wrap').each(function(){
+					var t = jQuery(this);
+					var s = 0;
+					t.camera({
+						height: '41%',
+						opacityOnGrid: true,
+						thumbnails: true
+					});
+				});
+			}); 
+		</script>
+	{% endblock%}
+	
+	{% block body_header%}
+		<body class="index">
+	{% endblock %}
+	
+	{% block site_wrapper %}
+	<div class="wrapper">
+	
+		<div class="container-fluid">
+			<div class="header-padding hidden-phone hidden-tablet">&nbsp;</div>
+			<div class="row-fluid">
+				<div class="span12">
+				
+					<div class="padding-wrapper">				
+						<div id="camera_wrap" class="camera_wrap">
+							<div data-src="/static/images/slides/test1.jpg" data-thumb="/static/images/slides/thumbs/street.jpg">
+								<div class="camera_caption">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
+							</div>
+							<div data-src="/static/images/slides/sanfrancisco.jpg" data-thumb="/static/images/slides/thumbs/sanfrancisco.jpg">
+								<div class="camera_caption">Donec tellus augue, varius nec malesuada ut, facilisis ac quam.</div>
+							</div>
+							<div data-src="/static/images/slides/pier.jpg" data-thumb="/static/images/slides/thumbs/pier.jpg">
+								<div class="camera_caption">Nullam leo quam, aliquam vel egestas ac, ornare in augue.</div>
+							</div>
+							<div data-src="/static/images/slides/paris.jpg" data-thumb="/static/images/slides/thumbs/paris.jpg">
+								<div class="camera_caption">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
+							</div>
+							<div data-src="/static/images/slides/london.jpg" data-thumb="/static/images/slides/thumbs/london.jpg">
+								<div class="camera_caption">Donec tellus augue, varius nec malesuada ut, facilisis ac quam.</div>
+							</div>
+							<div data-src="/static/images/slides/ferris-wheel.jpg" data-thumb="/static/images/slides/thumbs/ferris-wheel.jpg">
+								<div class="camera_caption">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
+							</div>
+							<div data-src="/static/images/slides/beach.jpg" data-thumb="/static/images/slides/thumbs/beach.jpg">
+								<div class="camera_caption">Donec tellus augue, varius nec malesuada ut, facilisis ac quam.</div>
+							</div>
+						</div>
+					</div>
+			
+				</div>
+			</div>
+		</div>
+		
+		<div class="container-fluid text-background content-main">
+			<div class="padding-wrapper">					
+				<div class="row-fluid">					
+					<div class="span4">
+						<h2><img class="theme-icon" src="/static/images/pie-chart.gif" alt="Icon - Pie Chart" /><br class="hidden-desktop" />Custom Jewelry</h2>
+						<p>It doesn't matter if you consider custom jewelry an extravagance or a necessity-Michael Collins will dazzle you with his creativity and ability to design pieces that are truly "you." Join the thousands of San Diegans who wouldn't go anywhere else for their custom jewelry.
+<br>
+<br>
+Michael works hard to keep his quality products affordable. Since he's a wholesaler, he can offer prices that are as dazzling as his custom creations. Just compare our diamond deals of the week to those on any other jewelry website; you'll be hard pressed to find a better deal anywhere. Guaranteed!
+<br>
+<br>
+Looking for a special ring, bracelet, necklace or pin? You've discovered the best place to find something really extraordinary. We've provided a sample of Michael's work here; more is available at the La Mesa store…or he can design something unique just for you.</p>
+					</div>
+					<div class="span4">
+						<h2><img class="theme-icon" src="/static/images/cogs.gif" alt="Icon - Cogs" /><br class="hidden-desktop" />Rolex Watches</h2>
+						<p>When does a watch do more than just tell time? When it's a Rolex, of course!
+<br>
+<br>
+Wearing a Rolex watch makes a statement…showcasing a sense of style and quality that is universally admired. If you've always dreamt of owning a Rolex, but perhaps found the price tag a little hard to swallow, Michael Collins can make your dream come true.
+<br>
+<br>
+Michael sells pre-owned men's and ladies Rolex watches that have been completely refurbished. Most are less than five years old; all come with a one-year guarantee…and an affordable price tag at least 50 percent less than a new model would cost.
+<br>
+<br>
+Don't put off that Rolex purchase any longer. Check out Michael's extensive selection of pre-owned Rolexes and choose the one that best reflects your personal style.</p>
+					</div>
+					<div class="span4">
+						<h2><img class="theme-icon" src="/static/images/clock.gif" alt="Icon - Clock" /><br class="hidden-desktop" />Jewelry Appraisals, Repairs and Restorations</h2>
+						<p>As a full-service jeweler, Michael Collins offers all the services that larger organizations do…but he does so with a personal touch and an amazing level of quality. When it comes to jewelry repair, there's no one better, whether you need a ring prong fixed, pearls restrung, or a broken bracelet clasp repaired.
+<br>
+<br>
+Michael also provides certified watch repairs and certified jewelry appraisals. If you don't sacrifice quality, then he is the jeweler for you. Thousands of San Diegans have already discovered the quality and value that is available from Michael A. Collins-Fine Jewelers. Now, it's your turn!</p>
+					</div>
+				</div>
+				
+				<div class="row-fluid spacer">&nbsp;</div>
+				
+				<div class="row-fluid">
+					<div class="span12 text-center">
+						<h2>Morbi posuere nisl</h2>
+					</div>			
+				</div>
+				
+				<div class="row-fluid">&nbsp;</div>
+				
+				<div class="row-fluid" style="text-align:center;">
+					<div class="span3">
+						<a class="lightview" data-lightview-group="index" data-lightview-title="Image Title" data-lightview-caption="You can give your images captions" href="/static/images/800x600.gif">
+							<img class="thumbnail" src="/static/images/220x150.gif" alt="Placeholder Image" />
+						</a>
+						<br /><br />			
+					</div>
+					
+					<div class="span3">
+						<a class="lightview" data-lightview-group="index" href="images/800x600.gif">
+							<img class="thumbnail" src="/static/images/220x150.gif" alt="Placeholder Image" />
+						</a>
+						<br /><br />			
+					</div>
+					
+					<div class="span3">
+						<a class="lightview" data-lightview-group="index" href="images/800x600.gif">
+							<img class="thumbnail" src="/static/images/220x150.gif" alt="Placeholder Image" />
+						</a>
+						<br /><br />
+					</div>
+					
+					<div class="span3">
+						<a class="lightview" data-lightview-group="index" href="images/800x600.gif">
+							<img class="thumbnail" src="/static/images/220x150.gif" alt="Placeholder Image" />
+						</a>
+						<br /><br />					
+					</div>
+				</div>
+				
+				<div class="row-fluid spacer">&nbsp;</div>
+				
+				<div class="row-fluid" style="text-align:center;">
+					<div class="span3">
+						<a class="lightview" data-lightview-group="index" href="images/800x600.gif">
+							<img class="thumbnail" src="/static/images/220x150.gif" alt="Placeholder Image" />
+						</a>
+						<br /><br />				
+					</div>
+					
+					<div class="span3">
+						<a class="lightview" data-lightview-group="index" href="images/800x600.gif">
+							<img class="thumbnail" src="/static/images/220x150.gif" alt="Placeholder Image" />
+						</a>
+						<br /><br />					
+					</div>
+					
+					<div class="span3">
+						<a class="lightview" data-lightview-group="index" href="images/800x600.gif">
+							<img class="thumbnail" src="/static/images/220x150.gif" alt="Placeholder Image" />
+						</a>
+						<br /><br />
+					</div>
+					
+					<div class="span3">
+						<a class="lightview" data-lightview-group="index" href="images/800x600.gif">
+							<img class="thumbnail" src="/static/images/220x150.gif" alt="Placeholder Image" />
+						</a>
+						<br /><br />					
+					</div>
+				</div>
+				
+			</div>
+		</div>
+		
+	</div>
+	{% endblock %}
+				

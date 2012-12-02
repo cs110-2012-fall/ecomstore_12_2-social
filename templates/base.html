@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html>
+{% load catalog_tags %}
+{% load search_tags %}
+	<head>
+		
+		<meta charset="UTF-8">
+		<meta name="description" content="Michael A. Collins Jewelers, a well known San Diego Local jewelery store" />
+		<meta name="keywords" content="Jewelers" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Michael A. Collins-Fine Jewelers</title>
+
+<!-- Styles -->
+
+		<link href="/static/css/bootstrap.css" rel="stylesheet" />
+		<link href="/static/css/themeStyle.css" rel="stylesheet" />
+		<link href="/static/css/theme-phone.css" rel="stylesheet" />
+		<link href="/static/css/theme-tablet.css" rel="stylesheet" />
+		<link href="/static/css/ecom_style.css" rel="stylesheet" />
+		<link href="/static/css/about_style.css" rel="stylesheet" />
+		<link href="/static/css/contact_style.css" rel="stylesheet" />
+		
+		<link href="/static/css/shop_online_style.css" rel="stylesheet" />
+		<link href="http://fonts.googleapis.com/css?family=PT+Sans:400,700,400italic,700italic" rel="stylesheet" type="text/css" />
+		<link href="http://fonts.googleapis.com/css?family=Limelight" rel="stylesheet" type="text/css" />
+		<link href='http://fonts.googleapis.com/css?family=Tangerine:700' rel='stylesheet' type='text/css'>
+		<style type="text/css">
+			.container > .content {
+        background-color: #eee;
+        padding: 20px;
+        margin: 50px -20px; 
+        -webkit-border-radius: 10px 10px 10px 10px;
+           -moz-border-radius: 10px 10px 10px 10px;
+                border-radius: 10px 10px 10px 10px;
+        -webkit-box-shadow: 0 1px 2px rgba(0,0,0,.15);
+           -moz-box-shadow: 0 1px 2px rgba(0,0,0,.15);
+                box-shadow: 0 1px 2px rgba(0,0,0,.15);
+      }
+
+	  .login-form {
+		margin-left: 65px;
+	  }
+	
+	  legend {
+		margin-right: -50px;
+		font-weight: bold;
+	  	color: #404040;
+	  }
+		</style>
+<!-- Scripts -->
+		
+		<!--[if lt IE 9]>
+    	<script src="scripts/html5.js"></script>
+    	<![endif]-->
+		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+		<script type="text/javascript" src="/static/scripts/bootstrap.min.js"></script> 
+	
+		{% block lightviewCSS %}
+		{% endblock %}
+		
+		{% block GoogleMapJS %}
+		{% endblock %}
+		
+		{% block CameraJS %}
+		{% endblock %}	
+		
+		
+		{% block checkoutValidationCss %}
+		{% endblock %}
+		
+		{% block checkoutValidationJs %}
+		{% endblock %}
+			
+		{% block catalogCss %}
+		{% endblock %}	
+	</head>
+
+<!-- facebook code -->
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+<!-- facebook code end -->
+
+	<div class="e-wrapper">
+	<div class="e-navbar-container">
+		<div class="span4" style="margin-top:20px">
+			<a class = "logo" href ="/index.html"> <center>Michael A. Collins Jewelry </center> </a>
+		</div>	
+			<div class= "e-nav-container-right">
+				<div class= "e-nav-upper-row">
+					<ul id="e-upper-links">
+					<li class="cart">
+						{% cart_box request %}	
+					</li>
+					<li class="account">
+						{% include 'tags/navigation.html' %}
+					</li>
+					<li class="search">
+						{% search_box request%}
+					</li>
+				</ul>
+				</div>
+				
+					<div class= "e-nav-middle-row">
+					<ul id="e-upper-links">
+					<li>
+						<a href= "http://www.facebook.com"> <img src="/static/images/facebook_icon.png" alt ="" width = "30" height ="30"></a> 	
+					</li>
+					<li>
+						<a href= "twitter.com"> <img src="/static/images/twitter_icon.png" alt ="" width = "30" height ="30"></a> 
+					</li>
+					<!-- 
+					<li>
+						<a href= "rss.com"> <img src="/static/images/rss_icon.png" alt ="" width = "30" height ="30"></a> 
+					</li>
+					-->
+					<li>
+						<a href= "pinterest.com"> <img src="/static/images/pinterest_icon.png" alt ="" width = "30" height ="30"></a> 
+					</li>
+				</ul>
+				</div>
+				
+				<div class="e-nav-lower-row">
+				<ul id="e-lower-links">
+					<li>
+						<a href="/index.html">Home</a>
+					</li>
+					<li>
+						<a href="/services.html">Services</a>
+					</li>
+					<li>
+						<a href="/shop_online.html">Shop-Online</a>
+					</li>
+					<li>
+						<a href="/about.html">About</a>
+					</li>
+					<li>
+						<a href="/contact.html">Contact</a>
+					</li>
+				</ul>
+				</div>
+			</div>
+											
+				<!--  <form class="e-navbar-search">
+				<input type="text" class="search-query" placeholder="search">
+				</form>  -->
+						
+	</div>	
+
+		<!-- <div class="navbar-inner">
+			
+				<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</a>			
+				<div class="nav-collapse collapse navigation-top pull-right">
+				  <div class="row">
+					
+					
+				  </div>
+				</div>
+		</div> -->
+    {% block site_wrapper %}
+    {% endblock %}
+    <div class="span12">
+					{% block content %}{% endblock %}
+	</div>
+
+</div>
+<!-- Footer -->
+	<footer>
+		<div class="e-footer">
+			<p>
+			<strong>(619) 589-8330</strong>
+			<br>
+			Michael A. Collins - Fine Jewelers
+			<br>
+			8501 La Mesa Blvd., La Mesa, Ca 91941 USA
+			<br>
+			</p>																																								
+		</div>
+		<div style ="position: absolute; bottom: 5px; right: 5px; text-transform: uppercase;text-align:right">
+		<img src ="/static/images/team_logo.png" alt="WIN" width =" 70px" height ="70px">	
+		</div>
+		
+	</footer>
+</body>
+
+<!-- begin facebook replace assets -->
+<script type="text/javascript">
+var sUrl = window.location;
+document.body.innerHTML = document.body.innerHTML.replace("http://thiswillgetreplaced.com", sUrl);
+document.body.innerHTML = document.body.innerHTML.replace('class="pls" style="width: 90%"', 'class="pls" style="width 0%"');
+</script>
+<!-- end facebook replace assets-->
+<!-- begin pintrest assets -->
+<script src="//assets.pinterest.com/js/pinit.js"></script>
+<!-- end pintrest assets -->
+<!-- begin twitter assets -->
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+<!-- end twitter assets -->
+	
+</html>

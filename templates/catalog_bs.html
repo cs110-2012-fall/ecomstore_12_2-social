@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+	{% load catalog_tags %}
+	{% load search_tags %}
+	
+{% block shop_cart%}
+	
+			     <div class="span3" style="margin-right:-50px">
+			         {% cart_box request %}
+			     </div>
+			     {% search_box request%}
+				
+{% endblock %}
+
+
+{% block site_wrapper %}
+	<div class="container-fluid text-background content-main">
+			<div class="header-padding hidden-phone hidden-tablet">&nbsp;</div>
+			<div class="padding-wrapper1" style="margin-top:100px">
+			
+		<div id="main">		
+			<div class="row">
+				<div class="span2">
+					{% include 'tags/category_list.html'%}
+				</div>
+				<div class="span12" style="margin-left:-30px;">
+					{% block content %}{% endblock %}
+				</div>
+			</div>				
+		</div>
+			</div>
+	</div>
+	
+{% endblock %}
+
+
+
+

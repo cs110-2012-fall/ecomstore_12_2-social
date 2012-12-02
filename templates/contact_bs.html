@@ -1,0 +1,152 @@
+	
+{% extends "base.html" %}	
+	{% block GoogleMapJS%}
+	<!-- GoogleMaps -->
+		<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>
+		<script type="text/javascript">
+		 var map;
+		 function initialize() {
+		   var myLatlng = new google.maps.LatLng(32.768205,-117.013686);
+		   var myOptions = {
+		     zoom: 16,
+		     center: myLatlng,
+		     mapTypeId: google.maps.MapTypeId.ROADMAP
+		   }
+		   var map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
+		   
+		   var marker = new google.maps.Marker({
+		       position: myLatlng, 
+		       map: map
+		   });   
+		 }
+		 google.maps.event.addDomListener(window, 'load', initialize);
+		</script>
+	{% endblock %}
+	
+	{% block body_header %}
+	<body class="contact">
+	{% endblock %}
+	
+	{% block site_wrapper %}
+	<div class="wrapper">
+		
+		<div class="container-fluid text-background content-main">
+			<div class="header-padding hidden-phone hidden-tablet">&nbsp;</div>
+			<div class="padding-wrapper">
+			
+				<div class="row-fluid">
+					<div class="span12 page-header">
+						<h1>Contact Michael A. Collins</h1>
+						<p class="subtitle">Michael looks forward to getting to know you and becoming your full-service jeweler.</p>
+					</div>
+				</div>
+				
+				<div class="row-fluid">
+					<div class="span12">
+						<div id="map_canvas"></div>
+					</div>
+				</div>
+				
+				<hr />
+				
+				<div class="row-fluid">
+					<div class="span7">
+						<h2>Contact Michael A. Collins directly</h2>
+						<br />
+						<div class="row-fluid">&nbsp;</div>
+						
+						<div class="row-fluid">
+							<div class="span6">
+								<h4>Phone Numbers</h4>
+								<p>
+									Sales: 1 800 123 4567<br />
+									Customer Service: 1 800 123 4568<br />
+									Head Office: (515) 123 4567<br />
+									Fax: 1 800 123 4569
+								</p>
+							</div>
+							
+							<div class="span6">
+								<h4>Head Office</h4>
+								<p>
+									Michael A. Collins-Fine Jewelers<br/>
+									8501 La Mesa Blvd. <br />
+									La Mesa, CA 91941 <br/>
+									(619) 589-8330 <br />
+								</p>
+							</div>
+						</div>
+						
+						<div class="row-fluid">&nbsp;</div>
+						
+						<div class="row-fluid">
+							<div class="span6">
+								<h4>Store Hours</h4>
+								<p>
+									Tuesday
+								 	10:00 - 5:30 <br />
+								Wednesday
+								 	10:00 - 5:30 <br />
+								Thursday
+								 	10:00 - 5:30 <br />
+								Friday
+								 	10:00 - 5:30 <br />
+								Saturday
+								 	10:00 - 3:00 <br />
+								Sunday
+								 	Closed <br />
+								Monday
+								 	Closed <br />
+
+								</p>
+							</div>
+							
+						</div>
+					</div>
+					
+					<div class="span5">
+						<form class="form contact">
+							<fieldset>
+								<h2>Send us a message</h2>
+								<br />
+								<div class="control-group">
+									<label class="control-label" for="contact-name">Name</label>
+									<div class="controls">
+										<input class="span12" type="text" name="contact-name" id="contact-name" placeholder="Your name" />
+									</div>
+								</div>
+								
+								<div class="control-group">
+									<label class="control-label" for="contact-email">Email</label>
+									<div class="controls">
+										<input class="span12" type="text" name="contact-email" id="contact-email" placeholder="Your email address" />
+									</div>
+								</div>
+								
+								<div class="control-group">
+									<label class="control-label" for="contact-phone">Phone</label>
+									<div class="controls">
+										<input class="span12" type="text" name="contact-phone" id="contact-phone" placeholder="Your phone number" />
+									</div>
+								</div>
+								
+								<div class="control-group">
+									<label class="control-label" for="contact-message">Message</label>
+									<div class="controls">
+										<textarea class="span12" rows="8" name="contact-message" id="contact-message" placeholder="Your message"></textarea>
+									</div>
+								</div>
+								
+								<input class="btn btn-large btn-info" type="submit" value="Submit" name="submit" />
+								
+							</fieldset>
+						</form>
+					</div>
+				</div>
+				
+			</div>
+		</div>
+		
+	</div>
+{% endblock %}
+

@@ -1,0 +1,87 @@
+{% extends "base.html" %}
+
+{% load catalog_filters %}
+
+{% block content %}
+	<div class="span12"  style="margin-top:30px; margin-left:70px;" >
+	<table class="table table-bordered table-striped" summary="Your Shopping Cart" id="shopping_cart">
+		<h1>Your Shopping Cart</h1>
+
+		<thead>
+			<tr>
+				<th>Remove</th>				
+				<th>Product</th>
+				<th>Image</th>
+				<th>Price</th>
+				<th>Quantity</th>
+				<th>Total</th>
+			</tr>
+		</thead>
+		<tfoot>
+			<tr>
+				<th class="right" colspan="5">
+					Cart Subtotal:
+				</th>
+				<th class="right">
+					{{ cart_subtotal|currency }}
+				</th>
+			</tr>
+			{% if cart_items %}
+			<tr>
+				<th class="right" colspan="6">
+					<form method="POST" action=".">
+					{% csrf_token %}
+    					<input type="hidden" name="submit" value="Checkout" />
+    					<!-- input type="image" name="Google Checkout" alt="Fast checkout through Google"
+        src="http://sandbox.google.com/checkout/buttons/checkout.gif?merchant_id={{ merchant_id }}
+              &w=180&h=46&style=white&variant=text&loc=en_US"  height="46" width="180" /-->
+              
+              		<input class="btn btn-primary btn-small search_btn" type="submit" value="Checkout" alt="Checkout" />
+    				</form>
+				</th>
+			</tr>
+			{% endif %}
+		</tfoot>
+		<tbody>
+		{% if cart_items %}
+			{% for item in cart_items %}
+				<tr>
+					<td>
+						<form method="post" action="." class="cart">{% csrf_token %}
+							<input type="hidden" name="item_id" value="{{ item.id }}" />
+							<input class="btn btn-primary btn-small search_btn" type="submit" name="submit" value="Remove"/>
+						</form>
+					</td>
+					<td class="muted center_text">
+						<a href="{{ item.get_absolute_url }}" class="cart">
+							{{ item.name }}
+						</a>
+					</td>
+					<td>  <img width="100" height="100" src="/static/user_images/{{item.thumbnail}}" ></td>
+					<td>{{ item.price|currency }}</td>
+					<td class="right">
+						<form method="post" action="." class="cart">{% csrf_token %}
+							<label for="quantity">Quantity:</label>
+							<input type="text" name="quantity" value="{{ item.quantity }}" id="quantity" size="2" class="quantity" maxlength="5" />
+							<input type="hidden" name="item_id" value="{{ item.id }}" />
+					
+						<input class="btn btn-primary" type="submit" name="submit" value="Update" />
+						</form>
+					</td>
+					
+					<td class="right">{{ item.total|currency }}</td>
+				</tr>
+			{% endfor %}
+		{% else %}
+		      <tr>
+					<td colspan="6" style="height:30px;">
+						Your cart is empty.
+					</td>
+				</tr>
+		{% endif %}
+		</tbody>
+	</table>
+	</div>
+	<br /><br />
+	{{ google_checkout_xml }}
+{% endblock %}

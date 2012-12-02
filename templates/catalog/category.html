@@ -1,0 +1,27 @@
+{% extends "catalog.html" %}
+{% load catalog_filters %}
+{% block catalog_content %}
+<ul id="e-category-header">
+<li> {{ c.name }}
+</ul>
+<!--  {{ c.description }} -->
+<br />
+<div class="e-product_thumbnails">
+	<ul class="e-thumbnails">
+	
+	{% for p in products %}
+		<li>
+		<div class ="e-thumb">
+		<a href="{{ p.get_absolute_url }}">
+		<img src="/static/user_images/{{p.thumbnail}}"> 
+		</a>
+		<div class = "e-caption">
+		<center>{{ p.name }} </center>
+		</div>
+		</div>
+		</li>
+
+	{% endfor %}
+		</ul>
+	</div>
+{% endblock %}

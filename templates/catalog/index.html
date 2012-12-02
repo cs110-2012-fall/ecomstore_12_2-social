@@ -1,0 +1,69 @@
+{% extends "catalog.html" %}
+
+{% block lightviewCSS %}
+	<!-- Lightview -->
+		<link rel="stylesheet" type="text/css" href="/static/css/lightview.css"/>
+			
+		<!--[if lt IE 9]>
+			<script type="text/javascript" src="scripts/excanvas.js"></script>
+		<![endif]-->
+		<script type="text/javascript" src="/static/scripts/spinners.min.js"></script>
+		<script type="text/javascript" src="/static/scripts/lightview.js"></script>
+	{% endblock %}
+	
+	{% block CameraJS %}
+	<!-- Camera -->
+		<link rel="stylesheet" id="camera-css"  href="/static/css/camera.css" type="text/css" media="all">
+
+		<script type="text/javascript" src="/static/scripts/jquery.mobile.customized.min.js"></script>
+		<script type="text/javascript" src="/static/scripts/jquery.easing.1.3.js"></script>
+		<script type="text/javascript" src="/static/scripts/camera.min.js"></script>
+		
+		<script>
+			jQuery(function(){
+				jQuery('#camera_wrap').each(function(){
+					var t = jQuery(this);
+					var s = 0;
+					t.camera({
+						height: '41%',
+						opacityOnGrid: true,
+						thumbnails: true
+					});
+				});
+			}); 
+		</script>
+	{% endblock%}
+	
+{% block catalog_content %}
+<div class="container-fluid">
+			
+			<div class="row-fluid">
+				<div class="span12">
+								
+						<div id="camera_wrap" class="camera_wrap" style="height:600px;">
+							<div data-src="/static/images/slides/test1.jpg" data-thumb="/static/images/slides/thumbs/street.jpg">
+								<div class="camera_caption">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
+							</div>
+							<div data-src="/static/images/slides/sanfrancisco.jpg" data-thumb="/static/images/slides/thumbs/sanfrancisco.jpg">
+								<div class="camera_caption">Donec tellus augue, varius nec malesuada ut, facilisis ac quam.</div>
+							</div>
+							<div data-src="/static/images/slides/pier.jpg" data-thumb="/static/images/slides/thumbs/pier.jpg">
+								<div class="camera_caption">Nullam leo quam, aliquam vel egestas ac, ornare in augue.</div>
+							</div>
+							<div data-src="/static/images/slides/paris.jpg" data-thumb="/static/images/slides/thumbs/paris.jpg">
+								<div class="camera_caption">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
+							</div>
+							<div data-src="/static/images/slides/london.jpg" data-thumb="/static/images/slides/thumbs/london.jpg">
+								<div class="camera_caption">Donec tellus augue, varius nec malesuada ut, facilisis ac quam.</div>
+							</div>
+							<div data-src="/static/images/slides/ferris-wheel.jpg" data-thumb="/static/images/slides/thumbs/ferris-wheel.jpg">
+								<div class="camera_caption">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
+							</div>
+							<div data-src="/static/images/slides/beach.jpg" data-thumb="/static/images/slides/thumbs/beach.jpg">
+								<div class="camera_caption">Donec tellus augue, varius nec malesuada ut, facilisis ac quam.</div>
+							</div>
+						</div>			
+				</div>
+			</div>
+		</div>
+{% endblock %}

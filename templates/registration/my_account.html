@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% block content %}
+<h1 align="center">My Account</h1>
+<br>
+<strong style="font-size:25px">Welcome, {{ name|capfirst }}!</strong>
+
+<ul class="nav nav-pills nav-stacked">
+	<li class="active">
+		<a style="font-size:20px">Order History</a>
+	</li>
+	<li href="#" class="my_account">
+		{% for order in orders %}
+		<a href="{{ order.get_absolute_url }}">
+			Order #{{ order.id }} - {{ order.date|date }} (view)
+		</a>
+		{% empty %}
+		You have no past orders.
+		{% endfor %}			
+	</li>
+	<li class="active"><a style="font-size:20px">Account Setting</a></li>
+	<li class="my_account">
+		
+			<li>
+				<a href="{% url django.contrib.auth.views.password_change %}">
+					Change Password
+				</a>
+			</li>
+
+			<li>
+				<a href="{% url order_info %}">
+					Edit Billing/Shipping Information
+				</a>
+			</li>
+		
+	</li>
+</ul>
+{% endblock %}
