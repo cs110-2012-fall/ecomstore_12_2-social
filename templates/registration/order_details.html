@@ -1,10 +1,13 @@
 {% extends "base.html" %}
 {% load catalog_filters %}
 {% block content %}
-<table id="receipt">
-<caption>
+<div class="span12"  style="margin-top:30px; margin-left:70px;" >
+<table class="table table-bordered table-striped" summary="Your Shopping Cart" id="shopping_cart">
+
+<h1 style="font-size:30px;">
 Details for Order # {{ order.id }}
-</caption>
+</h1>
+
 <thead>
 <tr>
 <th scope="col">Name</th>
@@ -35,4 +38,5 @@ Order Total: {{ order.total|currency }}
 {% endfor %}
 </tbody>
 </table>
+</div>
 {% endblock %}
