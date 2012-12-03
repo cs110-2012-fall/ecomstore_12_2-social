@@ -52,8 +52,8 @@ def process(request):
     
     results = {}
     
-    if(flag):
-        response = authnet.do_auth_capture(amount=amount, 
+   
+    response = authnet.do_auth_capture(amount=amount, 
                                        card_num=card_num, 
                                        exp_date=exp_date,
                                        card_cvv=cvv)

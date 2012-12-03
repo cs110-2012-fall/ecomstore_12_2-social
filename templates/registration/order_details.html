@@ -38,5 +38,13 @@ Order Total: {{ order.total|currency }}
 {% endfor %}
 </tbody>
 </table>
+<div class="row" style="margin-left:20%; margin-top:5%">
+		  <div class="span3">	
+			<a class="btn btn-large btn-info" style="color:white" href="url catalog_home">Continue Shopping</a>
+		  </div>
+		  <div class="span3">	
+			<a class="btn btn-large btn-info" href="{% url my_account %}">Go Back To My Account</a>
+		  </div>
+		</div>
 </div>
 {% endblock %}
