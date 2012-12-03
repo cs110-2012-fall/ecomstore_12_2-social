@@ -2,6 +2,18 @@
 
 {% load catalog_filters %}
 
+{% block checkoutValidationJs %}
+	<script type="text/javascript" src="/static/scripts/jquery.validate.min.js"></script>
+	<script type="text/javascript" src="/static/scripts/validateCart.js"></script>
+	
+{% endblock %}
+
+
+{% block checkoutValidationCss %}
+	<link href="/static/css/validationCheckout.css" rel="stylesheet" />
+{% endblock %}
+
+
 {% block content %}
 	<div class="span12"  style="margin-top:30px; margin-left:70px;" >
 	<table class="table table-bordered table-striped" summary="Your Shopping Cart" id="shopping_cart">
@@ -29,12 +41,9 @@
 			{% if cart_items %}
 			<tr>
 				<th class="right" colspan="6">
-					<form method="POST" action=".">
+					<form id='checkout_form' method="POST" action=".">
 					{% csrf_token %}
     					<input type="hidden" name="submit" value="Checkout" />
-    					<!-- input type="image" name="Google Checkout" alt="Fast checkout through Google"
-        src="http://sandbox.google.com/checkout/buttons/checkout.gif?merchant_id={{ merchant_id }}
-              &w=180&h=46&style=white&variant=text&loc=en_US"  height="46" width="180" /-->
               
               		<input class="btn btn-primary btn-small search_btn" type="submit" value="Checkout" alt="Checkout" />
     				</form>
@@ -43,6 +52,7 @@
 			{% endif %}
 		</tfoot>
 		<tbody>
+		
 		{% if cart_items %}
 			{% for item in cart_items %}
 				<tr>
@@ -57,10 +67,11 @@
 							{{ item.name }}
 						</a>
 					</td>
-					<td>  <img width="100" height="100" src="/static/user_images/{{item.thumbnail}}" ></td>
+					<td>  <img width="100" height="100" src="/static/user_images/{{item.image}}" ></td>
 					<td>{{ item.price|currency }}</td>
 					<td class="right">
-						<form method="post" action="." class="cart">{% csrf_token %}
+						<form id='checkout_form' method="post" action="." class="shop_cart">
+						{% csrf_token %}
 							<label for="quantity">Quantity:</label>
 							<input type="text" name="quantity" value="{{ item.quantity }}" id="quantity" size="2" class="quantity" maxlength="5" />
 							<input type="hidden" name="item_id" value="{{ item.id }}" />

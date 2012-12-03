@@ -7,11 +7,10 @@
 //
 
 $(document).ready(function(){
-		
-		$('#checkout_form').validate({
+		 $('.shop_cart').validate({
 	    rules: {
 	      quantity: {
-	      	required: true,
+	      	required: false,
 	      	min:1,
 	        minlength: 1,
 	        number: true

@@ -25,10 +25,13 @@ class CartItem(models.Model):
         return self.product.price
     @property
     def image(self):
-        return self.product.image
+        return self.product.thumbnail
     def get_absolute_url(self):
         return self.product.get_absolute_url()
     
+    def changeStock(self,num):
+        if((self.product.quantity - num) > 0):
+            self.product.quantity -= num
     def augment_quantity(self, quantity):
         """ called when a POST request comes in for a Product instance already in the shopping cart """
         self.quantity = self.quantity + int(quantity)

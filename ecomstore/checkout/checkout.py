@@ -1,12 +1,14 @@
 from ecomstore.checkout import google_checkout
+from django.shortcuts import get_object_or_404
 from ecomstore.cart import cart
 from ecomstore.checkout.models import Order, OrderItem
 from ecomstore.checkout.forms import CheckoutForm
 from ecomstore.checkout import authnet
 from ecomstore import settings
-
+from ecomstore.cart.models import CartItem
 from django.core import urlresolvers
 import urllib
+from ecomstore.catalog.models import Product
 
 def get_checkout_url(request):
     """ returns the URL from the checkout module for cart """
@@ -36,14 +38,26 @@ def process(request):
     exp_date = exp_month + exp_year
     cvv = postdata.get('credit_card_cvv','')
     amount = cart.cart_subtotal(request)
+  
+  #---- We try to update item stock here, but no luck here---- 
+  #  flag = True
+  #  cartItemList = cart.get_cart_items(request)
+  #  for item in cartItemList:
+  #      productInDB = get_object_or_404(Product, slug=item.product.slug)
+  #      if((productInDB.quantity - item.quantity) >= 0):
+  #          productInDB.quantity -= item.quantity
+  #      else:
+  #          flag = False;
+            
     
     results = {}
     
-    response = authnet.do_auth_capture(amount=amount, 
+    if(flag):
+        response = authnet.do_auth_capture(amount=amount, 
                                        card_num=card_num, 
                                        exp_date=exp_date,
                                        card_cvv=cvv)
-    if response[0] == APPROVED:
+    if response[0] == APPROVED:       
         transaction_id = response[6]
         order = create_order(request, transaction_id)
         results = {'order_number': order.id, 'message': u''}

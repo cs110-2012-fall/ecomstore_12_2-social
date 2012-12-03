@@ -7,6 +7,11 @@
 	
 {% endblock %}
 
+
+{% block checkoutValidationCss %}
+	<link href="/static/css/validationCheckout.css" rel="stylesheet" />
+{% endblock %}
+
 {% block catalog_content %}
 	<div class="row">
 		<div class="span9">
@@ -21,6 +26,7 @@
 		  <a href="/static/user_images/{{p.image}}" class="lightview" data-lightview-group="index">
 			<img src="/static/user_images/{{p.image}}" style="display:block; margin: 0 auto;" alt="{{ p.name }}" />
 		  </a>
+			
 			<ul class ="e-thumbnails" style="padding-top: 15px;">
 				{% if p.image2 and p.thumbnail2 %} 
 				<li>
@@ -105,10 +111,10 @@
 						{% if not forloop.last %}, {% endif %}
 					{% endfor %}
 				</address>
-			<form id= 'checkout_form' method="post" action="." class="cart">
+			<form id='checkout_form' method="post" action="." class="cart">
 				{% csrf_token %}
 					{{ form.as_p }}
-				<input type="submit" value="Add To Cart" name="submit" alt="Add To Cart" />	
+				<input class='btn btn-info' type="submit" value="Add To Cart" name="submit" alt="Add To Cart" />	
 			</form>
 			<br /> <br />
 			</div>	

@@ -104,6 +104,13 @@ def cart_subtotal(request):
         cart_total += cart_item.product.price * cart_item.quantity
     return cart_total
 
+def getCartItem(request):
+    cart_products = get_cart_items(request)
+    cartItemList = []
+    for cart_item in cart_products:
+         cartItemList.append(cart_item)
+    return cartItemList
+
 def is_empty(request):
     return cart_distinct_item_count(request) == 0
 
