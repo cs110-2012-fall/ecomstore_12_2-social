@@ -30,7 +30,7 @@ def show_checkout(request, template_name='checkout/checkout.html'):
                 receipt_url = urlresolvers.reverse('checkout_receipt')
                 return HttpResponseRedirect(receipt_url)
         else:
-            error_message = u'Correct the errors below'
+            error_message = u'Some required fields were not filled in. Please review your form to make sure all required information is present.'
     else:
             if request.user.is_authenticated():
                  user_profile = profile.retrieve(request)

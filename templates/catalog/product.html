@@ -1,5 +1,12 @@
 {% extends "catalog.html" %}
 {% load catalog_filters %}
+
+{% block checkoutValidationJs %}
+	<script type="text/javascript" src="/static/scripts/jquery.validate.min.js"></script>
+		<script type="text/javascript" src="/static/scripts/validateProduct.js"></script>
+	
+{% endblock %}
+
 {% block catalog_content %}
 	<div class="row">
 		<div class="span9">
@@ -98,7 +105,7 @@
 						{% if not forloop.last %}, {% endif %}
 					{% endfor %}
 				</address>
-			<form method="post" action="." class="cart">
+			<form id= 'checkout_form' method="post" action="." class="cart">
 				{% csrf_token %}
 					{{ form.as_p }}
 				<input type="submit" value="Add To Cart" name="submit" alt="Add To Cart" />	

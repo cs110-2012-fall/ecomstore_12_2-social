@@ -23,42 +23,37 @@ def show_category(request, category_slug, template_name="catalog/category.html")
     return render_to_response(template_name, locals(), context_instance=RequestContext(request))
 
 def show_product(request, product_slug, template_name="catalog/product.html"):
-    """ view for each product page """
-    product_cache_key = request.path
-    # try to get product from cache
-    p = cache.get(product_cache_key)
-    # if a cache miss, fall back on db query
-    if not p:
-        p = get_object_or_404(Product.active, slug=product_slug)
-        # store item in cache for next time
-        cache.set(product_cache_key, p, CACHE_TIMEOUT)
+    p = get_object_or_404(Product, slug=product_slug)
+   # imageList = []
+   # if p.image2 and p.thumbnail2:
+   #    imageList.append(p.image2)
+   #     imageList.append(p.thumbnail2)
+   # if p.image3 and p.thumbnail3:
+   #     imageList.append(p.image3)
+   #     imageList.append(p.thumbnail3)
+   # if p.image4 and p.thumbnail4:
+   #     imageList.append(p.image4)
+   #     imageList.append(p.thumbnail4)
+        
     categories = p.categories.filter(is_active=True)
     page_title = p.name
     meta_keywords = p.meta_keywords
     meta_description = p.meta_description
-    # evaluate the HTTP method, change as needed
-    if request.method == 'POST':
-        #create the bound form
-        postdata = request.POST.copy()
-        form = ProductAddToCartForm(request, postdata)
-        #check if posted data is valid
-        if form.is_valid():
-            #add to cart and redirect to cart page
-            cart.add_to_cart(request)
-            # if test cookie worked, get rid of it
-            if request.session.test_cookie_worked():
-                request.session.delete_test_cookie()
-            url = urlresolvers.reverse('show_cart')
-            return HttpResponseRedirect(url)
+    if request.method == "POST":
+		postdata = request.POST.copy()
+		form = ProductAddToCartForm(request,postdata)
+		if form.is_valid():
+			cart.add_to_cart(request)
+			if request.session.test_cookie_worked():
+				request.session.delete_test_cookie()
+			url = urlresolvers.reverse('show_cart')
+			return HttpResponseRedirect(url)
     else:
         #create the unbound form. Notice the request as a keyword argument
         form = ProductAddToCartForm(request=request, label_suffix=':')
     # assign the hidden input the product slug
-    form.fields['product_slug'].widget.attrs['value'] = product_slug
+    	form.fields['product_slug'].widget.attrs['value'] = product_slug
     # set test cookie to make sure cookies are enabled
-    request.session.set_test_cookie()
-    stats.log_product_view(request, p)
-    # product review additions, CH 10
-    product_reviews = ProductReview.approved.filter(product=p).order_by('-date')
-    review_form = ProductReviewForm()
-    return render_to_response(template_name, locals(), context_instance=RequestContext(request))
+    	request.session.set_test_cookie()    
+    	return render_to_response(template_name, locals(), context_instance=RequestContext(request))
+
